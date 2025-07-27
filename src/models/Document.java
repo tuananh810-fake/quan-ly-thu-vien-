@@ -1,5 +1,5 @@
 package models;
 
-public class Sach {
+public class Document {
     
 }
