@@ -1,28 +1,25 @@
 package models;
 
 public class Document {
-<<<<<<< HEAD
-    
-=======
     private String title;
     private String author;
     private String publicationDate;
     private String publisher;
     private String language;
     private int pages;
-    private String abstractOrSummary;
-    private String keywords;
+    private String id;
+    private int Quantity;
 
     // Constructor
-    public Document(String title, String author, String publicationDate, String publisher, String language, String isbnOrIdentifier, int pages, String abstractOrSummary, String keywords) {
+    public Document(String title, String author, String publicationDate, String publisher, String language, String isbnOrIdentifier, int pages, String id, int quantity) {
         this.title = title;
         this.author = author;
         this.publicationDate = publicationDate;
         this.publisher = publisher;
         this.language = language;
         this.pages = pages;
-        this.abstractOrSummary = abstractOrSummary;
-        this.keywords = keywords;
+        this.id = id;
+        this.Quantity = quantity;
     }
 
     public Document(String title, String author, String publicationDate) {
@@ -31,8 +28,8 @@ public class Document {
         this.publisher = "Unknown";
         this.language = "Unknown";
         this.pages = 0;
-        this.abstractOrSummary = "No summary available";
-        this.keywords = "None";
+        this.id = "";
+        this.Quantity = 0;
         if (publicationDate == null) {
             this.publicationDate = "N/A";
         } else {
@@ -90,20 +87,19 @@ public class Document {
         this.pages = pages;
     }
 
-    public String getAbstractOrSummary() {
-        return abstractOrSummary;
+    public String getId() {
+        return id;
     }
 
-    public void setAbstractOrSummary(String abstractOrSummary) {
-        this.abstractOrSummary = abstractOrSummary;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getKeywords() {
-        return keywords;
+    public int getQuantity() {
+        return Quantity;
     }
 
-    public void setKeywords(String keywords) {
-        this.keywords = keywords;
+    public void setQuantity(int quantity) {
+        this.Quantity = quantity;
     }
->>>>>>> edd18aa5ed8ec2e418302875afd4483d58c42a44
 }
