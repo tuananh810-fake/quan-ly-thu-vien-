@@ -1,0 +1,23 @@
+Hướng dẫn thêm JUnit vào dự án Java của bạn:
+
+1. Tải thư viện JUnit 5:
+   - Truy cập trang https://junit.org/junit5/
+   - Tải file junit-platform-console-standalone-x.y.z.jar (phiên bản mới nhất)
+
+2. Thêm JUnit vào classpath khi biên dịch và chạy:
+   - Giả sử bạn đã tải file junit-platform-console-standalone.jar vào thư mục lib trong dự án.
+
+3. Biên dịch code và test:
+   - Mở terminal trong thư mục src
+   - Biên dịch các file Java:
+     javac -cp ../lib/junit-platform-console-standalone.jar controller/*.java services/*.java library/*.java tests/*.java
+
+4. Chạy test:
+   - Chạy test với JUnit Console Launcher:
+     java -jar ../lib/junit-platform-console-standalone.jar --class-path . --scan-class-path
+
+5. Cấu hình trong VSCode:
+   - Cài đặt extension "Java Test Runner"
+   - Cấu hình đường dẫn thư viện JUnit trong settings nếu cần.
+
+Nếu bạn muốn, tôi có thể giúp bạn tạo script batch để tự động biên dịch và chạy test với JUnit.

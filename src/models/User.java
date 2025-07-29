@@ -1,10 +1,5 @@
 package models;
 
-<<<<<<< HEAD
-public class User {
-    
-}
-=======
 import java.util.List;
 import java.util.ArrayList;
 
@@ -106,4 +101,3 @@ public class User {
         this.borrowingHistoryDocuments = borrowingHistoryDocuments;
     }
 }
->>>>>>> edd18aa5ed8ec2e418302875afd4483d58c42a44
