@@ -11,7 +11,7 @@ public class Document {
     private int Quantity;
 
     // Constructor
-    public Document(String title, String author, String publicationDate, String publisher, String language, String isbnOrIdentifier, int pages, String id, int quantity) {
+    public Document(String title, String author, String publicationDate, String publisher, String language, int pages, String id, int quantity) {
         this.title = title;
         this.author = author;
         this.publicationDate = publicationDate;
