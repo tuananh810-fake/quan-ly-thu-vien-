@@ -17,9 +17,9 @@ public class LibraryController {
     private UserService userServices;
 
     // Constructor
-    public LibraryController(DocumentService documentServices,UserService userService){
-        this.documentServices=documentServices;
-        this.userServices=userService;
+    public LibraryController(DocumentService documentServices, UserService userService) {
+        this.documentServices = documentServices;
+        this.userServices = userService;
     }
 
     // Chức năng quản lý tài liệu
@@ -38,8 +38,8 @@ public class LibraryController {
         }
     }
 
-    //2.removeDocument(Xóa tài liệu)
-    public String removeDocument(String DocumentId){
+    // 2.removeDocument(Xóa tài liệu)
+    public String removeDocument(String DocumentId) {
         if (documentServices.removeDocument(DocumentId)) {
             return "Xóa tài liệu với ID '" + DocumentId + "' thành công!";
         } else {
@@ -47,7 +47,17 @@ public class LibraryController {
         }
     }
 
-    //3.updateDocument()
-
-    
+    // 3.updateDocument()
+    public String updateDocument(String DocumentId, int NewQuantily) {
+        if (NewQuantily<0) {
+            return "Lỗi:Số lượng mới không thể nhỏ hơn 0";
+        }
+        if (documentServices.updateDocumentQuantity(DocumentId,NewQuantily)) {
+            return "Cập nhật số lượng tài liệu ID '" + DocumentId + "' thành công thành " + NewQuantily + ".";
+        } else {
+            return "Không tìm thấy tài liệu với ID '" + DocumentId + "' để cập nhật.";
+        }
+    }
 }
+
+
