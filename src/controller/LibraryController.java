@@ -13,49 +13,40 @@ import java.util.List;// 1. Import các lớp Service mà Controller sẽ sử d
 
 public class LibraryController {
     // Khai báo biến lưu trữ đối tượng service
-    private DocumentService documentServices;
-    private UserService userServices;
+    private DocumentService documentService;
+    private UserService userService;
 
     // Constructor
-    public LibraryController(DocumentService documentServices, UserService userService) {
-        this.documentServices = documentServices;
-        this.userServices = userService;
+    public LibraryController(DocumentService documentService, UserService userService) {
+        this.documentService = documentService;
+        this.userService = userService;
     }
 
     // Chức năng quản lý tài liệu
-    // 1.addDocument(Thêm tài liệu)-Nhận thông tin từ ViewConsole
-    public String addDocument(String title, String author, String publicationDate,String publisher, String language, String pages,String quantily){
-        try {
+    // 1. Thêm tài liệu - nhận thông tin từ ViewConsole
+    public String addDocument(String title, String author, String publicationDate, String publisher, String language, String pages, int quantity) {
         // Gọi DocumentService để thực hiện việc thêm tài liệu
-        // DocumentService sẽ tạo ra đối tượng Document, Book, hoặc Thesis
-        // dựa trên 'type' và các thông tin khác
-        documentServices.addDocument(id, title, author, publicationDate, publisher, language,publicationDate,publisher, pages, ,quantity);
-        return "Thêm tài liệu '" + title + "' thành công!";
-        } catch (IllegalArgumentException e) {
-            return "Lỗi khi thêm tài liệu: " + e.getMessage();
-        } catch (Exception e) {
-            return "Đã xảy ra lỗi không mong muốn khi thêm tài liệu.";
+        String result = documentService.addDocument(title, author, publicationDate, publisher, language, pages, quantity);
+        return result;
+    }
+
+    // 2. Xóa tài liệu theo id
+    public String removeDocument(String documentId) {
+        boolean success = documentService.removeDocument(documentId);
+        if (success) {
+            return "Xóa tài liệu thành công.";
+        } else {
+            return "Không tìm thấy tài liệu với ID: " + documentId;
         }
     }
 
-    // 2.removeDocument(Xóa tài liệu)
-    public String removeDocument(String DocumentId) {
-        if (documentServices.removeDocument(DocumentId)) {
-            return "Xóa tài liệu với ID '" + DocumentId + "' thành công!";
+    // 3. Cập nhật số lượng tài liệu theo id
+    public String updateDocument(String documentId, int newQuantity) {
+        boolean success = documentService.updateDocumentQuantity(documentId, newQuantity);
+        if (success) {
+            return "Cập nhật số lượng tài liệu thành công.";
         } else {
-            return "Không tìm thấy tài liệu với ID '" + DocumentId + "' để xóa.";
-        }
-    }
-
-    // 3.updateDocument()
-    public String updateDocument(String DocumentId, int NewQuantily) {
-        if (NewQuantily<0) {
-            return "Lỗi:Số lượng mới không thể nhỏ hơn 0";
-        }
-        if (documentServices.updateDocumentQuantity(DocumentId,NewQuantily)) {
-            return "Cập nhật số lượng tài liệu ID '" + DocumentId + "' thành công thành " + NewQuantily + ".";
-        } else {
-            return "Không tìm thấy tài liệu với ID '" + DocumentId + "' để cập nhật.";
+            return "Không tìm thấy tài liệu với ID hoặc số lượng không hợp lệ.";
         }
     }
 }
