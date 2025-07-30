@@ -7,24 +7,13 @@ public class User {
     private String userID;
     private String name;
     private String email;
-    private List<Book> borrowedBooks;
-    private List<Book> borrowingHistory;
-    private List<Thesis> borrowedTheses;
-    private List<Thesis> borrowingHistoryTheses;
-    private List<Document> borrowedDocuments;
-    private List<Document> borrowingHistoryDocuments;
+    private List<BorrowHistory> borrowHistory;
 
-    // Constructor
-    public User(String userID, String name, String email) { 
+    public User(String userID, String name, String email) {
         this.userID = userID;
         this.name = name;
         this.email = email;
-        this.borrowedBooks = new ArrayList<>();
-        this.borrowingHistory = new ArrayList<>();
-        this.borrowedTheses = new ArrayList<>();
-        this.borrowingHistoryTheses = new ArrayList<>();
-        this.borrowedDocuments = new ArrayList<>();
-        this.borrowingHistoryDocuments = new ArrayList<>();
+        this.borrowHistory = new ArrayList<>();
     }
 
     // Getters
@@ -40,30 +29,6 @@ public class User {
         return email;
     }
 
-    public List<Book> getBorrowedBooks() {
-        return borrowedBooks;
-    }
-
-    public List<Book> getBorrowingHistory() {
-        return borrowingHistory;
-    }
-
-    public List<Thesis> getBorrowedTheses() {
-        return borrowedTheses;
-    }
-
-    public List<Thesis> getBorrowingHistoryTheses() {
-        return borrowingHistoryTheses;
-    }
-
-    public List<Document> getBorrowedDocuments() {
-        return borrowedDocuments;
-    }
-
-    public List<Document> getBorrowingHistoryDocuments() {
-        return borrowingHistoryDocuments;
-    }
-
     // Setters
     public void setUserID(String userID) {
         this.userID = userID;
@@ -77,27 +42,11 @@ public class User {
         this.email = email;
     }
 
-    public void setBorrowedBooks(List<Book> borrowedBooks) {
-        this.borrowedBooks = borrowedBooks;
+    public List<BorrowHistory> getBorrowHistory() {
+        return borrowHistory;
     }
 
-    public void setBorrowingHistory(List<Book> borrowingHistory) {
-        this.borrowingHistory = borrowingHistory;
-    }
-
-    public void setBorrowedTheses(List<Thesis> borrowedTheses) {
-        this.borrowedTheses = borrowedTheses;
-    }
-
-    public void setBorrowingHistoryTheses(List<Thesis> borrowingHistoryTheses) {
-        this.borrowingHistoryTheses = borrowingHistoryTheses;
-    }
-
-    public void setBorrowedDocuments(List<Document> borrowedDocuments) {
-        this.borrowedDocuments = borrowedDocuments;
-    }
-
-    public void setBorrowingHistoryDocuments(List<Document> borrowingHistoryDocuments) {
-        this.borrowingHistoryDocuments = borrowingHistoryDocuments;
+    public void setBorrowHistory(List<BorrowHistory> borrowHistory) {
+        this.borrowHistory = borrowHistory;
     }
 }
