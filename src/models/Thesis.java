@@ -7,8 +7,8 @@ public class Thesis extends Document {
     private String fieldOfStudy;
 
     // Constructor
-    public Thesis(String title, String author, String publicationDate, String publisher, String language, String isbnOrIdentifier, int pages, String id, int quantity, String university, String degree, String advisor, String fieldOfStudy) {
-        super(title, author, publicationDate, publisher, language, isbnOrIdentifier, pages, id, quantity);
+    public Thesis(String title, String author, String publicationDate, String publisher, String language, int pages, String id, int quantity, String university, String degree, String advisor, String fieldOfStudy) {
+        super(title, author, publicationDate, publisher, language, pages, id, quantity);
         this.university = university;
         this.degree = degree;
         this.advisor = advisor;

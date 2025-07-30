@@ -7,7 +7,7 @@ public class Book extends Document {
 
     // Constructor
     public Book(String title, String author, String publicationDate, String publisher, String language, String isbnOrIdentifier, int pages, String id, int quantity, String genre, String format) {
-        super(title, author, publicationDate, publisher, language, format, pages, id, quantity);
+        super(title, author, publicationDate, publisher, language, pages, id, quantity);
         this.genre = genre;
         this.format = format;
         this.isbnOrIdentifier = isbnOrIdentifier;
