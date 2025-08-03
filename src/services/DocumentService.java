@@ -66,7 +66,22 @@ public class DocumentService {
         return "Thêm tài liệu '" + title + "' thành công!";
     }
 
-    // 2. Xóa tài liệu theo id
+    // 2. Mượn tài liệu
+    public String borrowDocument(String documentId) {
+        for (Document doc : documents) {
+            if (doc.getId().equals(documentId)) {
+                if (doc.getQuantity() > 0) {
+                    doc.setQuantity(doc.getQuantity() - 1);
+                    return "Mượn tài liệu '" + doc.getTitle() + "' thành công!";
+                } else {
+                    return "Tài liệu '" + doc.getTitle() + "' đã hết.";
+                }
+            }
+        }
+        return "Không tìm thấy tài liệu với ID: " + documentId;
+    }
+
+    // 3. Xóa tài liệu theo id
     public boolean removeDocument(String documentId) {
         // Duyệt danh sách tài liệu để tìm tài liệu có id tương ứng
         for (Document doc : documents) {
@@ -78,7 +93,7 @@ public class DocumentService {
         return false; // Không tìm thấy tài liệu để xóa
     }
 
-    // 3. Cập nhật số lượng tài liệu theo id
+    // 4. Cập nhật số lượng tài liệu theo id
     public boolean updateDocumentQuantity(String documentId, int newQuantity) {
         if (newQuantity < 0) {
             return false; // Số lượng không hợp lệ
