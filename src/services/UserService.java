@@ -2,7 +2,6 @@ package services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import models.User;
 
@@ -18,8 +17,8 @@ public class UserService {
         return users;
     }
 
-    // 1. Thêm người dùng mới vào danh sách
-    public String addUser(String name, String email, String phoneNumber) {  
+    // Thêm người dùng mới vào danh sách với ID tự động tăng
+    public String addUser(String name, String email) {  
         // Kiểm tra các tham số đầu vào
         if (name == null || name.trim().isEmpty()) {
             return "Lỗi: Tên không được để trống.";
@@ -28,11 +27,11 @@ public class UserService {
             return "Lỗi: Email không được để trống.";
         }
         
-        // Tạo id duy nhất cho người dùng
-        String id = UUID.randomUUID().toString();
+        // Tạo ID tự động tăng theo số thứ tự
+        String id = "USER" + String.format("%04d", users.size() + 1);
 
-        // Tạo đối tượng User mới với đầy đủ tham số
-        User user = new User(name, email, id);
+        // Tạo đối tượng User mới
+        User user = new User(id, name, email);
         users.add(user);
         
         return "Thêm người dùng thành công với ID: " + id;

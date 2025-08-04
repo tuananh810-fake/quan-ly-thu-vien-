@@ -2,7 +2,6 @@ package services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import models.Document;
 
@@ -19,7 +18,7 @@ public class DocumentService {
         return documents;
     }
 
-    // 1. Thêm tài liệu mới vào danh sách
+    // Thêm tài liệu mới vào danh sách với ID tự động tăng
     public String addDocument(String title, String author, String publicationDate, String publisher, String language, String pages, int quantity) {
         // Kiểm tra các tham số đầu vào
         if (title == null || title.trim().isEmpty()) {
@@ -54,8 +53,8 @@ public class DocumentService {
             return "Lỗi: Số trang phải là một số nguyên hợp lệ.";
         }
 
-        // Tạo id duy nhất cho tài liệu
-        String id = UUID.randomUUID().toString();
+        // Tạo ID tự động tăng theo số thứ tự
+        String id = "DOC" + String.format("%04d", documents.size() + 1);
 
         // Tạo đối tượng Document mới với đầy đủ tham số
         Document newDocument = new Document(title, author, publicationDate, publisher, language, pagesInt, id, quantity);
@@ -63,7 +62,7 @@ public class DocumentService {
         // Thêm tài liệu vào danh sách
         documents.add(newDocument);
 
-        return "Thêm tài liệu '" + title + "' thành công!";
+        return "Thêm tài liệu '" + title + "' thành công với ID: " + id;
     }
 
     // 2. Mượn tài liệu
