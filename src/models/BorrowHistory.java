@@ -1,20 +1,30 @@
 package models;
 
 import java.util.Date;
-import java.util.List;
 
 public class BorrowHistory {
     private Document book;
     private Date borrowDate;
     private Date returnDate;
     private boolean isReturned;
+    private User user;
 
-    public List<BorrowHistory> getBorrowHistory(Document book, Date borrowDate, Date returnDate, boolean isReturned) {
+    public BorrowHistory() {}
+
+    public BorrowHistory (Document book, Date borrowDate, Date returnDate, boolean isReturned, User user) {
         this.book = book;
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;
         this.isReturned = isReturned;
-        return List.of(this);
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Document getBook() {

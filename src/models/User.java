@@ -9,6 +9,8 @@ public class User {
     private String email;
     private List<BorrowHistory> borrowHistory;
 
+    public User() {}
+    
     public User(String userID, String name, String email) {
         this.userID = userID;
         this.name = name;

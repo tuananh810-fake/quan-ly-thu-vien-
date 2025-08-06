@@ -10,6 +10,8 @@ public class Document {
     private String id;
     private int Quantity;
 
+    public Document() {}
+    
     // Constructor
     public Document(String title, String author, String publicationDate, String publisher, String language, int pages, String id, int quantity) {
         this.title = title;
